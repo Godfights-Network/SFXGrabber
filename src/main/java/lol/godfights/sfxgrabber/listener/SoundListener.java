@@ -21,7 +21,7 @@ public class SoundListener {
         }
     }
 
-    public long lastTick = 0;
+    public static long lastTick = 0;
 
     @SubscribeEvent
     public void onSound(PlaySoundEvent event) {

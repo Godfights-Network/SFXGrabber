@@ -1,6 +1,7 @@
 package lol.godfights.sfxgrabber.commands;
 
 import lol.godfights.sfxgrabber.SFXGrabber;
+import lol.godfights.sfxgrabber.listener.SoundListener;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -55,9 +56,10 @@ public class SFXGrabCommand extends CommandBase {
             case "save":
                 if (args.length < 2) {
                     SFXGrabber.mc.thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Please specify a filename to save the SFX sequence."));
+                    return;
                 }
-
                 SFXGrabber.grabbing = false;
+                SoundListener.lastTick = 0;
                 SFXGrabber.mc.thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Stopped grabbing SFX sequence, saving..."));
                 saveSequenceToFile(args[1]);
                 break;
