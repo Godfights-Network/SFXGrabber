@@ -38,7 +38,7 @@ public class SFXGrabCommand extends CommandBase {
     }
 
     @Override
-    public void processCommand(ICommandSender sender, String[] args) throws CommandException {
+    public void processCommand(ICommandSender sender, String[] args) {
         if (args.length < 1) {
             SFXGrabber.mc.thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Invalid arguments, usage: " + getCommandUsage(SFXGrabber.mc.thePlayer)));
             return;
@@ -50,7 +50,7 @@ public class SFXGrabCommand extends CommandBase {
                 SFXGrabber.tickCount = 0;
                 SFXGrabber.currentSequence = "";
                 SFXGrabber.grabbing = true;
-                sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + "Started grabbing SFX to specified file path."));
+                sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + "Started grabbing SFX sequence!"));
                 break;
             case "save":
                 if (args.length < 2) {
@@ -58,11 +58,11 @@ public class SFXGrabCommand extends CommandBase {
                 }
 
                 SFXGrabber.grabbing = false;
-                SFXGrabber.mc.thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Stopped grabbing SFX, saving..."));
+                SFXGrabber.mc.thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Stopped grabbing SFX sequence, saving..."));
                 saveSequenceToFile(args[1]);
                 break;
             default:
-                SFXGrabber.mc.thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Invalid arguments, usage: " + getCommandUsage(SFXGrabber.mc.thePlayer)));
+                SFXGrabber.mc.thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Invalid arguments, usage: " + getCommandUsage(sender)));
 
         }
     }
