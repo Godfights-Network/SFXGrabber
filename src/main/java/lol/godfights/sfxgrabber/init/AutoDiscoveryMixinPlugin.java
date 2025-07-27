@@ -1,4 +1,4 @@
-package com.github.nitalerie.sfxgrabber.init;
+package lol.godfights.sfxgrabber.init;
 
 import org.spongepowered.asm.lib.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
