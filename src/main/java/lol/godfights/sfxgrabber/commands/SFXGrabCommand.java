@@ -68,8 +68,10 @@ public class SFXGrabCommand extends CommandBase {
     }
 
     public void saveSequenceToFile(String fileName) {
-        String filePath = SFXGrabber.mc.mcDataDir.getAbsolutePath() + "/sfx_sequences/" + fileName + ".txt";
+        String dirPath = SFXGrabber.mc.mcDataDir.getAbsolutePath() + "/sfx_sequences";
+        String filePath = dirPath + "/" + fileName + ".txt";
         try {
+            Files.createDirectories(Paths.get(dirPath));
             Files.write(
                     Paths.get(filePath),
                     SFXGrabber.currentSequence.getBytes(),
